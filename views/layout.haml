@@ -4,7 +4,25 @@
     %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js", type: "text/javascript"}
     %script{src: "//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js", type: "text/javascript"}
     %script{src: "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js", type: "text/javascript"}
+    %script{src: "/js/index.js", type: "text/javascript"}
     %script{src: "/js/slots.js", type: "text/javascript"}
     %meta{name: "viewport", content: "initial-scale=1"}
+    %script#slots-template{type: "text/x-handlebars-template"}
+      :plain
+        {{#each .}}
+          {{> _reel}}
+        {{/each}}
+    %script#reel-template{type: "text/x-handlebars-template"}
+      :plain
+        <div class="slot-column">
+          {{#each .}}
+            {{> _box}}
+          {{/each}}
+        </div>
+    %script#box-template{type: "text/x-handlebars-template"}
+      :plain
+        <div class="slot-box">
+          <img src="/assets/bean.jpg">
+        </div>
   %body
     = yield
