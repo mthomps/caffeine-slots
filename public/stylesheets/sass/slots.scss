@@ -1,0 +1,65 @@
+$lightestPrimary: #FBA7AB;
+$lightPrimary: #D1686E;
+$primary: #A7383D;
+$darkPrimary: #7D151A;
+$darkestPrimary: #540004;
+$textColor: #2C1300;
+
+$smallScreenSize: 620px;
+
+h1, h2, h3 {
+  font-family: Arial;
+  margin: 10px;
+  padding: 0;
+}
+
+#wrapper {
+  text-align: center;
+  color: $textColor;
+}
+
+#slot-machine {
+  display: inline-block;
+  font-family: Arial;
+  background: $lightestPrimary;
+}
+
+#slot-columns {
+  font-size: 0;
+  border: 1px solid $darkestPrimary;
+}
+
+.slot-column {
+  display: inline-block;
+  height: 400px;
+  width: 160px;
+  margin: 0 15px;
+  background: $lightPrimary;
+}
+
+.button {
+  display: inline-block;
+  margin: 18px;
+  padding: 8px 14px;
+  border: 2px solid $darkPrimary;
+  font-size: 20px;
+  font-weight: 300;
+  background: $lightPrimary;
+  color: $darkPrimary;
+  text-decoration: none;
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+
+  &:hover, &:focus {
+    background: lighten($lightPrimary, 7%);
+  }
+  &:active {
+    background: darken($lightPrimary, 7%);
+  }
+}
+
+@media screen and (max-width: $smallScreenSize) {
+
+}
