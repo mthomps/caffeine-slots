@@ -16,6 +16,7 @@ Slots = (function() {
   function setupTemplates() {
     Templates = {};
     Templates.slots = $('#slots-template').html();
+    Templates.winnerMessage = $('#winner-message-template').html();
     Templates._reel = $('#reel-template').html();
     Templates._box = $('#box-template').html();
 
@@ -55,17 +56,18 @@ Slots = (function() {
 
   function handleSpin() {
     $('.slot-boxes').removeClass('paused').addClass('spinning');
-    var baseSpinTime = 1700;
+    $('#message-container').html('');
+    var baseSpinTime = 800;
     _.each($('.slot-boxes'), function(el) {
-      baseSpinTime += (Math.floor(Math.random() * 3) + 1) * 175;
-      setTimeout(function() { $(el).addClass('paused'); }, baseSpinTime);
       baseSpinTime += 900;
+      baseSpinTime += (Math.floor(Math.random() * 900))
+      setTimeout(function() { $(el).addClass('paused'); }, baseSpinTime);
     });
 
     setTimeout(function() {
         $('#spin-button').removeClass('disabled');
         checkResult();
-      }, baseSpinTime);
+      }, baseSpinTime + 500);
   }
 
   function checkResult() {
@@ -82,17 +84,23 @@ Slots = (function() {
       }
     });
 
-    var result = _.find(valCounts, function(count) {
-      return count >= 3;
-    });
+    var result;
+    var beverageNames = ['coffee', 'espresso', 'tea']
+    for(var i = 0; i < valCounts.length; i++) {
+      if (valCounts[i] >= 3) {
+        result = beverageNames[i];
+      }
+    }
 
     if (result) {
       handleWinner(result);
     }
   }
 
-  function handleWinner(value) {
-    console.log('win!')
+  function handleWinner(beverageName) {
+    var template = Handlebars.compile(Templates.winnerMessage);
+    var winnerView = template({beverage: beverageName});
+    $('#message-container').hide().html(winnerView).slideDown();
   }
 
   return slots;

@@ -28,5 +28,8 @@
         <div class="slot-box">
           <div class="sprite {{category}}{{val}}"></div>
         </div>
+    %script#winner-message-template{type: "text/x-handlebars-template"}
+      :plain
+        <p>Nice! You won a cup of {{beverage}}!</p>
   %body
     = yield
