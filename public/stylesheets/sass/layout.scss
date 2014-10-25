@@ -1,0 +1,48 @@
+$lightestPrimary: #8EAFFA;
+$lightPrimary: #87A6EF;
+$primary: #556FA9;
+$darkPrimary: #47577D;
+$darkestPrimary: #2A2F38;
+$textColor: #2C1300;
+
+$smallScreenSize: 620px;
+
+h1, h2, h3 {
+  font-family: Arial;
+  margin: 10px;
+  padding: 0;
+}
+
+#wrapper {
+  text-align: center;
+  color: $textColor;
+}
+
+.button {
+  display: inline-block;
+  margin: 18px;
+  padding: 8px 14px;
+  border: 2px solid $darkPrimary;
+  font-size: 20px;
+  font-weight: 300;
+  background: $lightPrimary;
+  color: $darkPrimary;
+  text-decoration: none;
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+
+  &:hover, &:focus {
+    background: lighten($lightPrimary, 7%);
+  }
+
+  &:active, &.disabled {
+    background: darken($lightPrimary, 7%);
+    cursor: default;
+  }
+}
+
+@media screen and (max-width: $smallScreenSize) {
+
+}

@@ -1,63 +1,78 @@
-$lightestPrimary: #FBA7AB;
-$lightPrimary: #D1686E;
-$primary: #A7383D;
-$darkPrimary: #7D151A;
-$darkestPrimary: #540004;
-$textColor: #2C1300;
+@import 'layout';
+@import 'sprites';
 
-$smallScreenSize: 620px;
-
-h1, h2, h3 {
-  font-family: Arial;
-  margin: 10px;
-  padding: 0;
-}
-
-#wrapper {
-  text-align: center;
-  color: $textColor;
-}
+$reelOffset: -360px;
 
 #slot-machine {
+  position: relative;
   display: inline-block;
+  min-width: 572px;
   font-family: Arial;
-  background: $lightestPrimary;
+}
+
+#center-pointer {
+  position: absolute;
+  top: 150px;
+  width: 100%;
+  height: 2px;
+  background: $darkestPrimary;
 }
 
 #slot-columns {
   font-size: 0;
   border: 1px solid $darkestPrimary;
+  background: $lightestPrimary;
+  overflow: hidden;
 }
 
 .slot-column {
+  position: relative;
+  z-index: 20;
   display: inline-block;
-  height: 400px;
-  width: 160px;
+  height: 300px;
+  width: 120px;
   margin: 0 15px;
   background: $lightPrimary;
 }
 
-.button {
-  display: inline-block;
-  margin: 18px;
-  padding: 8px 14px;
-  border: 2px solid $darkPrimary;
-  font-size: 20px;
-  font-weight: 300;
-  background: $lightPrimary;
-  color: $darkPrimary;
-  text-decoration: none;
-
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-
-  &:hover, &:focus {
-    background: lighten($lightPrimary, 7%);
+.slot-boxes {
+  &.spinning {
+    -webkit-animation: REEL-SPIN .5s linear infinite;
+    -moz-animation:    REEL-SPIN .5s linear infinite;
+    -o-animation:      REEL-SPIN .5s linear infinite;
+    animation:         REEL-SPIN .5s linear infinite;
   }
-  &:active {
-    background: darken($lightPrimary, 7%);
+
+  &.paused {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
   }
+}
+
+.slot-box {
+  border-top: 1px solid $darkestPrimary;
+  border-bottom: 1px solid $darkestPrimary;
+  background: #eee;
+}
+
+@-webkit-keyframes REEL-SPIN {
+  0% { -webkit-transform: translate(0, 0); }
+  100% { -webkit-transform: translate(0, $reelOffset); }
+}
+
+@-moz-keyframes REEL-SPIN {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(0, $reelOffset); }
+}
+
+@-o-keyframes REEL-SPIN {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(0, $reelOffset); }
+}
+
+@keyframes REEL-SPIN {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(0, $reelOffset); }
 }
 
 @media screen and (max-width: $smallScreenSize) {
