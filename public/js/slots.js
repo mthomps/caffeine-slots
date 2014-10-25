@@ -1,5 +1,5 @@
 Slots = (function() {
-  var slots = {}
+  var slots = {};
 
   slots.start = function() {
     setupView(getSlotsData());
@@ -27,9 +27,7 @@ Slots = (function() {
   function bindEvents() {
     $('#spin-button').click(function(event) {
       event.preventDefault();
-      if ($(event.target).hasClass('disabled')) {
-        return;
-      } else {
+      if (!($(event.target).hasClass('disabled'))) {
         $(event.target).addClass('disabled')
         handleSpin();
       }
@@ -60,7 +58,7 @@ Slots = (function() {
     var baseSpinTime = 800;
     _.each($('.slot-boxes'), function(el) {
       baseSpinTime += 900;
-      baseSpinTime += (Math.floor(Math.random() * 900))
+      baseSpinTime += (Math.floor(Math.random() * 900));
       setTimeout(function() { $(el).addClass('paused'); }, baseSpinTime);
     });
 
@@ -70,6 +68,7 @@ Slots = (function() {
       }, baseSpinTime + 500);
   }
 
+  //TODO: Avoid this position checking, possibly move animation stuff more into JS
   function checkResult() {
     var valCounts = [0,0,0];
     _.each($('.slot-boxes'), function(el) {
@@ -85,7 +84,7 @@ Slots = (function() {
     });
 
     var result;
-    var beverageNames = ['coffee', 'espresso', 'tea']
+    var beverageNames = ['coffee', 'espresso', 'tea'];
     for(var i = 0; i < valCounts.length; i++) {
       if (valCounts[i] >= 3) {
         result = beverageNames[i];
