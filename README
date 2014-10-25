@@ -1,0 +1,5 @@
+A 3-reel slot machine with a chance of winning 1 of 3 caffeinated drinked (coffee, espresso, or tea). Created on top of a Sinatra app, uses Handlebars, Underscore, Jquery, and Sass.
+
+TODO: 
+ - Make more responsive to small screens
+ - Move some of the animation code from css into JS so we have more control over exactly when the reels stop spinning (this will make it easier to check for a winner)
