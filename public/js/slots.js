@@ -2,13 +2,13 @@ Slots = (function() {
   var slots = {}
 
   slots.start = function() {
-    setupView();
+    setupView(getSlotsData());
   }
 
-  function setupView() {
+  function setupView(data) {
     setupTemplates();
     var template = Handlebars.compile(Templates.slots);
-    var slotsView = template(getSlotsData());
+    var slotsView = template(data);
     $('#slot-columns').html(slotsView);
     bindEvents();
   }
