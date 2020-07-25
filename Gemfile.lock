@@ -12,8 +12,8 @@ GEM
   specs:
     haml (4.0.5)
       tilt
-    rack (1.5.2)
-    rack-protection (1.5.3)
+    rack (1.6.13)
+    rack-protection (1.5.5)
       rack
     sass (3.4.0)
     tilt (2.0.1)
